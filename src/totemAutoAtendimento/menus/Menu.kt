@@ -9,7 +9,7 @@ class Menu {
 
     fun menuInicial(){
         try {
-            DIVISOR
+            println(DIVISOR)
             println("Faça sua escolha:")
             println("[1] LANCHE")
             println("[2] BEBIDA")
@@ -24,11 +24,13 @@ class Menu {
                     menuNovoProduto()
                 }
                 else -> {
+                    println(DIVISOR)
                     println(OPC_INVALIDA)
                     menuInicial()
                 }
             }
         }catch (ex: IllegalArgumentException){
+            println(DIVISOR)
             println(ITEM_INVALIDO)
             menuInicial()
         }
@@ -47,12 +49,14 @@ class Menu {
                     opcoesCarrinho()
                 }
                 else -> {
+                    println(DIVISOR)
                     println(OPC_INVALIDA)
                     menuNovoProduto()
                 }
             }
 
         }catch (ex: IllegalArgumentException){
+            println(DIVISOR)
             println(FORMATO_INVALIDO)
             menuNovoProduto()
         }
@@ -83,11 +87,13 @@ class Menu {
                     carrinho.finalizarPedido()
                 }
                 else -> {
+                    println(DIVISOR)
                     println(OPC_INVALIDA)
                     opcoesCarrinho()
                 }
             }
         }catch (ex: IllegalArgumentException){
+            println(DIVISOR)
             println(FORMATO_INVALIDO)
             opcoesCarrinho()
         }

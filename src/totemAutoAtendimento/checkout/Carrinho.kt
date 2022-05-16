@@ -32,11 +32,13 @@ class Carrinho {
 
                 }
                 else -> {
+                    println(DIVISOR)
                     println(OPC_INVALIDA)
                     escolherLanche()
                 }
             }
         }catch (ex: IllegalArgumentException){
+            println(DIVISOR)
             println(ITEM_INVALIDO)
             escolherLanche()
         }
@@ -59,11 +61,13 @@ class Carrinho {
                     inserirProduto(novoSuco)
                 }
                 else -> {
+                    println(DIVISOR)
                     println(OPC_INVALIDA)
                     escolherBebida()
                 }
             }
         }catch (ex: IllegalArgumentException){
+            println(DIVISOR)
             println(ITEM_INVALIDO)
             escolherBebida()
         }
@@ -95,7 +99,7 @@ class Carrinho {
             print("$codigo | ")
             produto.mostrarProduto()
         }
-        println("                TOTAL = R$$totalCarrinho                ")
+        println("TOTAL NO CARRINHO = R$$totalCarrinho")
     }
 
     fun editarItem(){
@@ -105,6 +109,7 @@ class Carrinho {
             mostrarCarrinho()
         }
         else{
+            println(DIVISOR)
             println(CODIGO_INVALIDO)
             editarItem()
         }
@@ -120,6 +125,7 @@ class Carrinho {
             mostrarCarrinho()
         }
         else{
+            println(DIVISOR)
             println(CODIGO_INVALIDO)
             removerItem()
         }
@@ -128,7 +134,6 @@ class Carrinho {
     fun finalizarPedido(){
         println(DIVISOR)
         println("            Total do Pedido = $totalCarrinho            ")
-        println(DIVISOR)
 
         val checkout = Pagamento(totalCarrinho)
         checkout.escolherFormaPagto()

@@ -22,18 +22,21 @@ class Utilitaria {
                 qtd = readln().toInt()
                 qtd
             }catch (ex: IllegalArgumentException){
+                println(DIVISOR)
                 println(FORMATO_INVALIDO)
+                println(DIVISOR)
                 pedirQuantidade()
             }
         }
 
         fun solicitarCodigo(): Int{
             return try {
-                print(DIVISOR)
+                println(DIVISOR)
                 print("Digite o código do item desejado: ")
                 val codigoDigitado = readln().toInt()
                 codigoDigitado
             }catch (ex: IllegalArgumentException){
+                println(DIVISOR)
                 println(FORMATO_INVALIDO)
                 solicitarCodigo()
             }

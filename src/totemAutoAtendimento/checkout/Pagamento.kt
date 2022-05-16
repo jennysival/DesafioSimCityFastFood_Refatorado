@@ -6,31 +6,40 @@ class Pagamento(val totalCompra: Double) {
 
     fun escolherFormaPagto() {
         try {
+            println(DIVISOR)
             println("Escolha a forma de pagamento:")
             println("[1] Cartão de Crédito")
             println("[2] Cartão de Débito")
             println("[3] Vale Refeição")
             println("[4] Dinheiro")
-            println(ESCOLHA_OPC)
+            print(ESCOLHA_OPC)
             when(readln().toInt()){
                 1 -> {
+                    println(DIVISOR)
                     println(PAGTO_FINALIZADO)
+                    println(DIVISOR)
                 }
                 2 -> {
+                    println(DIVISOR)
                     println(PAGTO_FINALIZADO)
+                    println(DIVISOR)
                 }
                 3 -> {
+                    println(DIVISOR)
                     println(PAGTO_FINALIZADO)
+                    println(DIVISOR)
                 }
                 4 -> {
                     pagtoDinheiro()
                 }
                 else -> {
+                    println(DIVISOR)
                     println(OPC_INVALIDA)
                     escolherFormaPagto()
                 }
             }
         }catch (ex: IllegalArgumentException){
+            println(DIVISOR)
             println(FORMATO_INVALIDO)
             escolherFormaPagto()
         }
@@ -43,7 +52,7 @@ class Pagamento(val totalCompra: Double) {
 
         if(dinheiro < totalCompra){
             println(DIVISOR)
-            print("        * Dinheiro insuficiente, tente novamente *      ")
+            println("        * Dinheiro insuficiente, tente novamente *      ")
             pagtoDinheiro()
         }
         else if(dinheiro > totalCompra){
@@ -52,9 +61,12 @@ class Pagamento(val totalCompra: Double) {
             println("                O seu troco é de R$$troco               ")
             println(DIVISOR)
             println(PAGTO_FINALIZADO)
+            println(DIVISOR)
         }
         else{
+            println(DIVISOR)
             println(PAGTO_FINALIZADO)
+            println(DIVISOR)
         }
     }
 }
