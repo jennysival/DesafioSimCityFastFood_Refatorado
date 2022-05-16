@@ -3,7 +3,7 @@ package totemAutoAtendimento.utilitarias
 class Utilitaria {
 
     companion object {
-        var qtd = 0
+        private var qtd = 0
             set(value) {
                 if (value > 0){
                     field = value

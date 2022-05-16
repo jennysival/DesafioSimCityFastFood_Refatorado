@@ -10,9 +10,9 @@ import totemAutoAtendimento.utilitarias.Utilitaria.Companion.pedirQuantidade
 import totemAutoAtendimento.utilitarias.Utilitaria.Companion.solicitarCodigo
 
 class Carrinho {
-    val mapProdutos = mutableMapOf<Int, Produto>()
-    var codigoProduto = 120
-    var totalCarrinho = 0.0
+    private val mapProdutos = mutableMapOf<Int, Produto>()
+    private var codigoProduto = 120
+    private var totalCarrinho = 0.0
 
     fun escolherLanche(){
         try {
@@ -73,18 +73,18 @@ class Carrinho {
         }
     }
 
-    fun inserirProduto(novoProduto: Produto){
+    private fun inserirProduto(novoProduto: Produto){
         novoProduto.calcularQuantidade(pedirQuantidade(), novoProduto.preco)
         salvarProdutoNoCarrinho(novoProduto)
     }
 
-    fun salvarProdutoNoCarrinho(produto: Produto): Int{
+    private fun salvarProdutoNoCarrinho(produto: Produto): Int{
         codigoProduto += 1
         mapProdutos[codigoProduto] = produto
         return codigoProduto
     }
 
-    fun calcularPrecoFinal(){
+    private fun calcularPrecoFinal(){
         var total = 0.0
         mapProdutos.forEach { (codigo, produto) ->
             total += produto.precoFinal

@@ -2,7 +2,7 @@ package totemAutoAtendimento.checkout
 
 import totemAutoAtendimento.utilitarias.*
 
-class Pagamento(val totalCompra: Double) {
+class Pagamento(private val totalCompra: Double) {
 
     fun escolherFormaPagto() {
         try {
@@ -45,7 +45,7 @@ class Pagamento(val totalCompra: Double) {
         }
     }
 
-    fun pagtoDinheiro(){
+    private fun pagtoDinheiro(){
         println(DIVISOR)
         print("Digite o valor em dinheiro: ")
         val dinheiro = readln().toDouble()

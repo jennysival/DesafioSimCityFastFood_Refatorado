@@ -5,7 +5,7 @@ import totemAutoAtendimento.utilitarias.*
 
 class Menu {
 
-    val carrinho = Carrinho()
+    private val carrinho = Carrinho()
 
     fun menuInicial(){
         try {
@@ -36,7 +36,7 @@ class Menu {
         }
     }
 
-    fun menuNovoProduto(){
+    private fun menuNovoProduto(){
         try {
             println(DIVISOR)
             println("Adicionar novo item?")
@@ -62,7 +62,7 @@ class Menu {
         }
     }
 
-    fun opcoesCarrinho(){
+    private fun opcoesCarrinho(){
         try {
             println(DIVISOR)
             println("O que deseja fazer agora?")

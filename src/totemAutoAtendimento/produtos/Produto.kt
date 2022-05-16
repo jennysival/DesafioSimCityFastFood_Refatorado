@@ -2,7 +2,7 @@ package totemAutoAtendimento.produtos
 
 import totemAutoAtendimento.utilitarias.DIVISOR
 
-abstract class Produto(val tipoProduto: String = "", val nome: String, val preco: Double) {
+abstract class Produto(val tipoProduto: String = "", private val nome: String, val preco: Double) {
     var precoFinal = 0.0
     private var quantidade = 0
 
