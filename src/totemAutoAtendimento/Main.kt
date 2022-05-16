@@ -1,5 +1,8 @@
 package totemAutoAtendimento
 
-fun main() {
+import totemAutoAtendimento.menus.Menu
 
+fun main() {
+    val menu = Menu()
+    menu.menuInicial()
 }

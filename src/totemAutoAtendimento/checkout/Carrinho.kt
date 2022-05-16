@@ -5,10 +5,7 @@ import totemAutoAtendimento.produtos.bebidas.Refrigerante
 import totemAutoAtendimento.produtos.bebidas.Suco
 import totemAutoAtendimento.produtos.lanches.XBurger
 import totemAutoAtendimento.produtos.lanches.XSalada
-import totemAutoAtendimento.utilitarias.CODIGO_INVALIDO
-import totemAutoAtendimento.utilitarias.ESCOLHA_OPC
-import totemAutoAtendimento.utilitarias.ITEM_INVALIDO
-import totemAutoAtendimento.utilitarias.OPC_INVALIDA
+import totemAutoAtendimento.utilitarias.*
 import totemAutoAtendimento.utilitarias.Utilitaria.Companion.pedirQuantidade
 import totemAutoAtendimento.utilitarias.Utilitaria.Companion.solicitarCodigo
 
@@ -82,9 +79,11 @@ class Carrinho {
     }
 
     fun calcularPrecoFinal(){
+        var total = 0.0
         mapProdutos.forEach { codigo, produto ->
-            totalCarrinho += produto.precoFinal
+            total += produto.precoFinal
         }
+        totalCarrinho = total
     }
 
     fun mostrarCarrinho(){
@@ -121,6 +120,12 @@ class Carrinho {
     }
 
     fun finalizarPedido(){
+        println(DIVISOR)
+        println("Total do Pedido = $totalCarrinho")
+        println(DIVISOR)
+
+        val checkout = Pagamento(totalCarrinho)
+        checkout.escolherFormaPagto()
 
     }
 }
