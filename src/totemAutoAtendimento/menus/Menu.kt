@@ -2,6 +2,7 @@ package totemAutoAtendimento.menus
 
 import totemAutoAtendimento.checkout.Carrinho
 import totemAutoAtendimento.utilitarias.*
+import kotlin.system.exitProcess
 
 class Menu {
 
@@ -70,6 +71,7 @@ class Menu {
             println("[2] Editar um item")
             println("[3] Remover item")
             println("[4] Finalizar Pedido")
+            println("[5] Cancelar e Sair")
             print(ESCOLHA_OPC)
             when(readln().toInt()){
                 1 -> {
@@ -85,6 +87,12 @@ class Menu {
                 }
                 4 -> {
                     carrinho.finalizarPedido()
+                }
+                5 -> {
+                    println(DIVISOR)
+                    println("              * Seu pedido foi cancelado *              ")
+                    println(DIVISOR)
+                    exitProcess(0)
                 }
                 else -> {
                     println(DIVISOR)
