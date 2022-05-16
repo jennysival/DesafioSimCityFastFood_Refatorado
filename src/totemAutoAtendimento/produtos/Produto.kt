@@ -1,13 +1,13 @@
 package totemAutoAtendimento.produtos
 
+import totemAutoAtendimento.utilitarias.DIVISOR
+
 abstract class Produto(val tipoProduto: String = "", val nome: String, val preco: Double) {
     var precoFinal = 0.0
-    private var quantidade = 0.0
+    private var quantidade = 0
 
-    abstract fun escolherProduto()
-
-    fun calcularQuantidade(qtd: Double, preco: Double){
-        precoFinal = preco*qtd
+    fun calcularQuantidade(qtd: Int, preco: Double){
+        precoFinal = preco * qtd.toDouble()
         quantidade = qtd
     }
 
@@ -16,11 +16,9 @@ abstract class Produto(val tipoProduto: String = "", val nome: String, val preco
     }
 
     fun editarQuantidade(){
+        println(DIVISOR)
         print("Digite a nova quantidade de $nome: ")
-        val novaQtd = readln().toDouble()
+        val novaQtd = readln().toInt()
         calcularQuantidade(novaQtd, preco)
     }
-
-
-
 }

@@ -1,8 +1,6 @@
 package totemAutoAtendimento.checkout
 
-import totemAutoAtendimento.utilitarias.FORMATO_INVALIDO
-import totemAutoAtendimento.utilitarias.OPC_INVALIDA
-import totemAutoAtendimento.utilitarias.PAGTO_FINALIZADO
+import totemAutoAtendimento.utilitarias.*
 
 class Pagamento(val totalCompra: Double) {
 
@@ -13,6 +11,7 @@ class Pagamento(val totalCompra: Double) {
             println("[2] Cartão de Débito")
             println("[3] Vale Refeição")
             println("[4] Dinheiro")
+            println(ESCOLHA_OPC)
             when(readln().toInt()){
                 1 -> {
                     println(PAGTO_FINALIZADO)
@@ -38,16 +37,20 @@ class Pagamento(val totalCompra: Double) {
     }
 
     fun pagtoDinheiro(){
+        println(DIVISOR)
         print("Digite o valor em dinheiro: ")
         val dinheiro = readln().toDouble()
 
         if(dinheiro < totalCompra){
-            print("Dinheiro insuficiente, tente novamente")
+            println(DIVISOR)
+            print("        * Dinheiro insuficiente, tente novamente *      ")
             pagtoDinheiro()
         }
         else if(dinheiro > totalCompra){
             val troco = dinheiro - totalCompra
-            println("O seu troco é de R$$troco")
+            println(DIVISOR)
+            println("                O seu troco é de R$$troco               ")
+            println(DIVISOR)
             println(PAGTO_FINALIZADO)
         }
         else{

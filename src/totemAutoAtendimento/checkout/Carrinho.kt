@@ -16,6 +16,7 @@ class Carrinho {
 
     fun escolherLanche(){
         try {
+            println(DIVISOR)
             println("Escolha seu lanche:")
             println("[1] X-BURGER: R$10")
             println("[2] X-SALADA: R$12")
@@ -43,6 +44,7 @@ class Carrinho {
 
     fun escolherBebida(){
         try {
+            println(DIVISOR)
             println("Escolha sua bebida:")
             println("[1] REFRIGERANTE: R$8")
             println("[2] SUCO: R$6")
@@ -68,7 +70,7 @@ class Carrinho {
     }
 
     fun inserirProduto(novoProduto: Produto){
-        novoProduto.calcularQuantidade(pedirQuantidade(novoProduto.nome), novoProduto.preco)
+        novoProduto.calcularQuantidade(pedirQuantidade(), novoProduto.preco)
         salvarProdutoNoCarrinho(novoProduto)
     }
 
@@ -80,7 +82,7 @@ class Carrinho {
 
     fun calcularPrecoFinal(){
         var total = 0.0
-        mapProdutos.forEach { codigo, produto ->
+        mapProdutos.forEach { (codigo, produto) ->
             total += produto.precoFinal
         }
         totalCarrinho = total
@@ -88,17 +90,18 @@ class Carrinho {
 
     fun mostrarCarrinho(){
         calcularPrecoFinal()
-        println("CARRINHO")
-        mapProdutos.forEach { codigo, produto ->
+        println("------------------- C A R R I N H O --------------------")
+        mapProdutos.forEach { (codigo, produto) ->
             print("$codigo | ")
-            println(produto.mostrarProduto())
+            produto.mostrarProduto()
         }
-        println("TOTAL = R$$totalCarrinho")
+        println("                TOTAL = R$$totalCarrinho                ")
     }
 
     fun editarItem(){
-        if(solicitarCodigo() in mapProdutos){
-            mapProdutos[solicitarCodigo()]?.editarQuantidade()
+        val codigo = solicitarCodigo()
+        if(codigo in mapProdutos){
+            mapProdutos[codigo]?.editarQuantidade()
             mostrarCarrinho()
         }
         else{
@@ -108,9 +111,12 @@ class Carrinho {
     }
 
     fun removerItem(){
-        if(solicitarCodigo() in mapProdutos){
-            mapProdutos.remove(solicitarCodigo())
-            println("Item removido com sucesso!")
+        val codigo = solicitarCodigo()
+        if(codigo in mapProdutos){
+            mapProdutos.remove(codigo)
+            println(DIVISOR)
+            println("             * Item removido com sucesso! *             ")
+            println(DIVISOR)
             mostrarCarrinho()
         }
         else{
@@ -121,11 +127,10 @@ class Carrinho {
 
     fun finalizarPedido(){
         println(DIVISOR)
-        println("Total do Pedido = $totalCarrinho")
+        println("            Total do Pedido = $totalCarrinho            ")
         println(DIVISOR)
 
         val checkout = Pagamento(totalCarrinho)
         checkout.escolherFormaPagto()
-
     }
 }

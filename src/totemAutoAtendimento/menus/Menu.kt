@@ -36,6 +36,7 @@ class Menu {
 
     fun menuNovoProduto(){
         try {
+            println(DIVISOR)
             println("Adicionar novo item?")
             println(" [1] SIM  |  [2] NÃO")
             print(ESCOLHA_OPC)
@@ -43,6 +44,7 @@ class Menu {
                 1 -> menuInicial()
                 2 -> {
                     carrinho.mostrarCarrinho()
+                    opcoesCarrinho()
                 }
                 else -> {
                     println(OPC_INVALIDA)
@@ -58,11 +60,13 @@ class Menu {
 
     fun opcoesCarrinho(){
         try {
+            println(DIVISOR)
             println("O que deseja fazer agora?")
             println("[1] Adicionar mais itens")
             println("[2] Editar um item")
             println("[3] Remover item")
             println("[4] Finalizar Pedido")
+            print(ESCOLHA_OPC)
             when(readln().toInt()){
                 1 -> {
                     menuInicial()
