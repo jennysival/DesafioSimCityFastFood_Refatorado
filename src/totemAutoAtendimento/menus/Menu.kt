@@ -18,10 +18,12 @@ class Menu {
             when(readln().toInt()){
                 1 -> {
                     carrinho.escolherLanche()
+                    carrinho.mostrarCarrinho()
                     menuNovoProduto()
                 }
                 2 -> {
                     carrinho.escolherBebida()
+                    carrinho.mostrarCarrinho()
                     menuNovoProduto()
                 }
                 else -> {
@@ -68,7 +70,7 @@ class Menu {
             println(DIVISOR)
             println("O que deseja fazer agora?")
             println("[1] Adicionar mais itens")
-            println("[2] Editar um item")
+            println("[2] Editar qtd de um item")
             println("[3] Remover item")
             println("[4] Finalizar Pedido")
             println("[5] Cancelar e Sair")
