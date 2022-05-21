@@ -1,6 +1,10 @@
 package totemAutoAtendimento.menus
 
 import totemAutoAtendimento.checkout.Carrinho
+import totemAutoAtendimento.produtos.bebidas.Refrigerante
+import totemAutoAtendimento.produtos.bebidas.Suco
+import totemAutoAtendimento.produtos.lanches.XBurger
+import totemAutoAtendimento.produtos.lanches.XSalada
 import totemAutoAtendimento.utilitarias.*
 import kotlin.system.exitProcess
 
@@ -17,12 +21,12 @@ class Menu {
             print(ESCOLHA_OPC)
             when(readln().toInt()){
                 1 -> {
-                    carrinho.escolherLanche()
+                    carrinho.escolherProduto(SEU_LANCHE, XBurger(), XSalada())
                     carrinho.mostrarCarrinho()
                     menuNovoProduto()
                 }
                 2 -> {
-                    carrinho.escolherBebida()
+                    carrinho.escolherProduto(SUA_BEBIDA, Refrigerante(), Suco())
                     carrinho.mostrarCarrinho()
                     menuNovoProduto()
                 }

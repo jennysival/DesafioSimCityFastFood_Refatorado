@@ -1,10 +1,6 @@
 package totemAutoAtendimento.checkout
 
 import totemAutoAtendimento.produtos.Produto
-import totemAutoAtendimento.produtos.bebidas.Refrigerante
-import totemAutoAtendimento.produtos.bebidas.Suco
-import totemAutoAtendimento.produtos.lanches.XBurger
-import totemAutoAtendimento.produtos.lanches.XSalada
 import totemAutoAtendimento.utilitarias.*
 import totemAutoAtendimento.utilitarias.Utilitaria.Companion.pedirQuantidade
 import totemAutoAtendimento.utilitarias.Utilitaria.Companion.solicitarCodigo
@@ -14,66 +10,30 @@ class Carrinho {
     private var codigoProduto = 120
     private var totalCarrinho = 0.0
 
-    fun escolherLanche(){
+    fun escolherProduto(tipoDeProduto: String, produto1: Produto, produto2: Produto){
         try {
             println(DIVISOR)
-            println("Escolha seu lanche:")
-            println("[1] X-BURGER: R$10")
-            println("[2] X-SALADA: R$12")
-            print(ESCOLHA_OPC)
+            println("Escolha $tipoDeProduto:")
+            println("[1] ${produto1.nome.uppercase()}: R$${produto1.preco}")
+            println("[2] ${produto2.nome.uppercase()}: R$${produto2.preco}")
+            println(ESCOLHA_OPC)
             when(readln().toInt()){
-                1 -> {
-                    val novoXBurger = XBurger()
-                    inserirProduto(novoXBurger)
-                }
-                2 -> {
-                    val novoXSalada = XSalada()
-                    inserirProduto(novoXSalada)
-
-                }
+                1 -> inserirProdutoNoCarrinho(produto1)
+                2 -> inserirProdutoNoCarrinho(produto2)
                 else -> {
                     println(DIVISOR)
                     println(OPC_INVALIDA)
-                    escolherLanche()
+                    escolherProduto(tipoDeProduto, produto1, produto2)
                 }
             }
         }catch (ex: IllegalArgumentException){
             println(DIVISOR)
             println(ITEM_INVALIDO)
-            escolherLanche()
+            escolherProduto(tipoDeProduto, produto1, produto2)
         }
     }
 
-    fun escolherBebida(){
-        try {
-            println(DIVISOR)
-            println("Escolha sua bebida:")
-            println("[1] REFRIGERANTE: R$8")
-            println("[2] SUCO: R$6")
-            print(ESCOLHA_OPC)
-            when(readln().toInt()){
-                1 -> {
-                    val novoRefri = Refrigerante()
-                    inserirProduto(novoRefri)
-                }
-                2 -> {
-                    val novoSuco = Suco()
-                    inserirProduto(novoSuco)
-                }
-                else -> {
-                    println(DIVISOR)
-                    println(OPC_INVALIDA)
-                    escolherBebida()
-                }
-            }
-        }catch (ex: IllegalArgumentException){
-            println(DIVISOR)
-            println(ITEM_INVALIDO)
-            escolherBebida()
-        }
-    }
-
-    private fun inserirProduto(novoProduto: Produto){
+    private fun inserirProdutoNoCarrinho(novoProduto: Produto){
         novoProduto.calcularQuantidade(pedirQuantidade(), novoProduto.preco)
         salvarProdutoNoCarrinho(novoProduto)
     }
